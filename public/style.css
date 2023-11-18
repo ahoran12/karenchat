@@ -1,0 +1,142 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#top-bar {
+    background-color: #748196;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+#top-bar strong {
+    font-size: 24px;
+}
+
+#profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: block;
+    background-color: #e5e5ea; /* Placeholder background color */
+    background-image: url('https://cdn.glitch.global/288703c8-0210-4f4f-99f6-d2d8e021aa82/karen.png?v=1698965162874'); /* Replace with your photo URL */
+    background-size: cover;
+}
+
+.chat-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px; /* Space for input container */
+  max-height: 60%;
+  overflow-y: auto;
+  
+}
+
+.input-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input-box {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ffffff;
+  margin-right: 10px;
+}
+
+.send-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.clear-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.chat-bubble {
+  font-family: "San Francisco", sans-serif;
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin: 5px;
+  max-width: 70vw;
+  word-wrap: break-word;
+}
+
+.user-bubble {
+  background-color: #0f87fe;
+  color: #ffffff;
+  align-self: flex-end;
+  display:flex;
+  justify-content: flex-end;
+}
+
+.assistant-bubble {
+  background-color: #e5e5ea;
+  color: #000000;
+  align-self: flex-start;
+}
+
+button:disabled{
+  background-color:grey;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+    content: '';  
+  box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: #0f87fe;
+}
+    
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+

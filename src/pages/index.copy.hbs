@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>K4R3N</title>
+  </head>
+  <body>
+    <div id="top-bar">
+      <strong>Hi, I'm K4R3N</strong>
+    </div>
+
+    <div id="profile-photo"></div>
+
+    <div class="chat-container" id="chat-container">
+      <!-- Loop through messages -->
+      {{#each messages}}
+        <div class="chat-bubble {{this.role}}-bubble">
+          {{this.content}}
+        </div>
+      {{/each}}
+      <!-- Show loading indicator if loading -->
+      {{#if loading}}
+        <div class="loading-indicator"></div>
+      {{/if}}
+    </div>
+
+    <form class="color-search input-container" id="message-form" method="post">
+      <input
+        type="text"
+        class="input-box"
+        placeholder="What do you want Plankton."
+        id="message-input"
+        name="message"
+        required="required"
+      />
+      <button
+        class="send-button"
+        name="button"
+        value="submit"
+        type="submit"
+      >Send</button>
+      <button
+        class="clear-button"
+        name="button"
+        value="clear"
+        type="submit"
+      >Clear</button>
+    </form>
+
+    <script>
+      // Function to append a message bubble to the chat container
+      function appendMessage(text, role) {
+        var container = document.getElementById('chat-container');
+        var bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${role}-bubble`;
+        bubble.innerHTML = text;
+        container.appendChild(bubble);
+        scrollToBottom(container); // Scroll to the bottom after appending the message
+      }
+
+      // Event listener for the form submission
+      document.getElementById('message-form').addEventListener('submit', function(event) {
+        var input = document.getElementById('message-input');
+        var message = input.value.trim();
+
+        if (message) {
+          // Append user message
+          appendMessage(message, 'user');
+          appendMessage("<span class='loader'></span>", "assistant");
+          input.value = ''; // Clear the input box
+          let button = document.querySelector('.send-button');
+          button.disabled = true;
+          scrollToBottom(chats);
+        }
+      });
+
+      function scrollToBottom(div) {
+        div.scrollTop = div.scrollHeight - div.clientHeight;
+      }
+
+      // Get the chat container.
+      const chats = document.querySelector('.chat-container');
+      scrollToBottom(chats);
+    </script>
+  </body>
+</html>
